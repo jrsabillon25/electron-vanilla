@@ -1,6 +1,31 @@
 const {app, BrowserWindow, Menu} = require('electron');
+const mysql = require('mysql');
 
-let window;
+var connection, window;
+
+function handleConnection(){
+    try{
+        connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '12345678',
+            database: 'db'
+        });
+    
+        connection.connect(function(err){
+            if(err){
+                throw err;
+            }
+            console.log("CONNECTED!");
+        });
+    }catch(exception){
+        console.error(exception);
+    }
+}
+
+handleConnection();
+
+exports.connection = connection;
 
 function createWindow(){
     window = new BrowserWindow({width: 800, height: 600});
@@ -21,7 +46,7 @@ function modifyMenu(){
             label: "Developer",
             submenu: [
                 {
-                    label: "Open Tools",
+                    label: "Open developer tools",
                     click () { window.webContents.openDevTools(); }
                 }
             ]
