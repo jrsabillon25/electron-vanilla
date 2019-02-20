@@ -1,0 +1,17 @@
+{
+  "name": "myfirstelectron",
+  "version": "1.0.0",
+  "description": "my first electron project",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "wilmer sabillon",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.0.5"
+  },
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
